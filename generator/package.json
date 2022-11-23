@@ -11,9 +11,8 @@
   "bin": "index.js",
   "type": "commonjs",
   "dependencies": {
-    
+    "axios": "^1.2.0",
     "epub-gen": "^0.1.0",
-    
     "request": "^2.81.0"
   }
 }
