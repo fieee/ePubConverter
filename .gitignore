@@ -1,4 +1,5 @@
+.DS_Store/
+node_modules/
 .DS_Store
 blank_book/.DS_Store
-generator/node_modules
-generator/.DS_Store
+
