@@ -10,11 +10,17 @@
     <nav epub:type="toc" role="doc-toc" id="toc" >
       <h2>Contents</h2>
       <ol>
+        <li><a href="page-<%=pages[0].id%>.xhtml">Start</a></li>
+      </ol>
+    </nav>
+    <nav epub:type="landmarks" id="guide">
+      <h2>Guide</h2>
+      <ol>
         <% for (let page of pages) { %>
           <li><a href="page-<%=page.id%>.xhtml"><%=page.title%></a></li>
         <% } %>
       </ol>
-    </nav>
+  </nav>
     <nav epub:type="page-list"  role="doc-pagelist">
       <ol>
         <% let pageId = 1; %>
