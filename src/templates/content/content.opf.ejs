@@ -39,7 +39,7 @@
 
     <% for (page of pages) { %>
       <item id="smil-<%=page.id%>" href="smil/page-<%=page.id%>.smil" media-type="application/smil+xml" />
-      <item id="page-<%=page.id%>" href="page-<%=page.id%>.xhtml" media-type="application/xhtml+xml"   media-overlay="smil-<%=page.id%>"/>
+      <item id="page-<%=page.id%>" href="page-<%=page.id%>.xhtml" media-type="application/xhtml+xml" media-overlay="smil-<%=page.id%>"/>
       <item id="<%=page.id%>.jpg" href="images/<%=page.id%>.jpg" media-type="image/jpeg"/>
       <item id="<%=page.id%>.mp3" href="audio/<%=page.id%>.mp3" media-type="audio/mpeg"/>
     <% } %>
@@ -47,9 +47,9 @@
 	<spine>
     <% for (idx in pages) { %>
       <% if (idx % 2) { %>
-        <itemref idref="page-<%pages[idx].id%>" properties="page-spread-right" />
+        <itemref idref="page-<%=pages[idx].id%>" properties="page-spread-right" />
       <% } else { %>
-        <itemref idref="page-<%pages[idx].id%>" properties="page-spread-left" />
+        <itemref idref="page-<%=pages[idx].id%>" properties="page-spread-left" />
       <% } %>
     <% } %>
 	</spine>
