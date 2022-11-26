@@ -1,0 +1,10 @@
+<% for(style of styles){ %>
+.style-<%=style.formatConfigurationId%> {
+  <% if(style.fontFamily){%> font-family: '<%=style.fontFamily%>';<% } %>
+  <% if(style.fontSize){%> font-size: <%=style.fontSize%>;<% } %>
+  <% if(style.fontColor){%> color: '<%=style.fontColor%>';<% } %>
+  <% if(style.lineHeight){%> line-height: <%=style.lineHeight%>;<% } %>
+  <% if(style.backgroundColor){%> background-color: <%=style.backgroundColor%>;<% } %>
+  <% if(style.textOpacity){%> opacity: <%=style.textOpacity%>;<% } %>
+}
+<% } %>

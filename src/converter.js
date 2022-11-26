@@ -22,18 +22,21 @@ const libs = require('./libs');
   const bookData = await libs.parsepPubFile(ppubPath);
   const options = { epubPath, ppubPath, bookData };
 
+  // generate the book level css file
+  await libs.generateBookCSS(bookData, options);
   let contentOPF;
-  let pageId = 0;
+  //geenerate book pages
   for(const page of bookData.pages) {
-    //geenerate page by page
     await libs.createPageXHTML(page, options);
     await libs.createPageSMIL(page, options);
     await libs.copyPageResourceFiles(page, options);
-    contentOPF = await libs.updateContentOPF(contentOPF, options)
+    contentOPF = await libs.updateContentOPF(contentOPF, options);
   }
+  //geenerate final epub3 file
   await libs.generateFinalizedEPUB(contentOPF,
             epubPath, path.join(flags.outputDir, filename));
+  //clean up all temp files
   await libs.cleanupTempFiles([ppubPath, epubPath]);
 
-  console.log('Completed');
+  if(process.env.VERBOSE) console.log('Completed');
 })()

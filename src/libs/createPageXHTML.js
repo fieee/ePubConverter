@@ -23,6 +23,6 @@ module.exports = async (page, options) => {
   // write page file
   fs.writeFileSync(filename, renderedData);
   if(process.env.VERBOSE) console.log('ePub page file generated = ', filename);
-  // process.exit();
+  process.exit();
   return filename;
 }
