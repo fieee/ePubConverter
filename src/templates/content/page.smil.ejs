@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<smil xmlns="http://www.w3.org/ns/SMIL" xmlns:epub="http://www.idpf.org/2007/ops" version="3.0">
+  <body>
+    <% for(text of karaoke) {%>
+      <par id="par-<%=text.wordId%>%>">
+        <text src="../page-<%=id%>.xhtml#word-<%=text.wordId%>" />
+        <audio clipBegin="<%=text.timeStart/1000%>" clipEnd="<%=text.timeEnd/1000%>" src="../<%=audioFile%>"/>
+      </par>
+    <% } %>
+	</body>
+</smil>

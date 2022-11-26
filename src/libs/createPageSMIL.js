@@ -10,6 +10,7 @@ module.exports = async (page, options) => {
 
   const data = {
     ...page,
+    pageId: page.id,
     audioFile: path.join('audio', path.basename(page.audioFile)),
   }
 
