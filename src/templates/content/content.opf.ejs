@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<package xmlns="http://www.idpf.org/2007/opf" xmlns:dc="http://purl.org/dc/elements/1.1/" unique-identifier="bookid" version="3.0" prefix="rendition: http://www.idpf.org/vocab/rendition/# ibooks: http://vocabulary.itunes.apple.com/rdf/ibooks/vocabulary-extensions-1.0/">
+	<metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+    <dc:date><%=publishDate%></dc:date>
+		<dc:language><%=language%></dc:language>
+    <dc:title><%=bookName%></dc:title>
+		<dc:publisher><%=publisher%></dc:publisher>
+		<dc:identifier id="bookid">urn:uuid:<%=bookId%></dc:identifier>
+
+    <meta name="fixed-layout" content="true"/>
+    <meta name="original-resolution" content="<%=resolution%>"/>
+    <meta name="book-type" content="<%=bookType%>"/>
+    <meta property="rendition:spread"><%=configuration.orientation%></meta>
+    <meta name="RegionMagnification" content="true"/>
+		<meta property="dcterms:modified"><%=modifiedDate%></meta>
+		<meta name="cover" content="cover.jpg" />
+		<meta property="rendition:layout">pre-paginated</meta>
+		<meta property="ibooks:specified-fonts">true</meta>
+		<meta property="media:active-class">-epub-media-overlay-active</meta>
+		<meta property="media:duration">1873.71</meta>
+		<meta property="ibooks:version">1.1</meta>
+    <meta property="schema:accessibilitySummary">This publication conforms to WCAG 2.0 Level A.</meta>
+    <meta property="schema:accessModeSufficient">visual</meta>
+    <meta property="schema:accessibilityFeature">synchronizedAudioText</meta>
+    <meta property="schema:accessibilityFeature">highContrastDisplay</meta>
+    <meta property="schema:accessibilityFeature">readingOrder</meta>
+    <meta property="schema:accessibilityFeature">structuralNavigation</meta>
+    <meta property="schema:accessibilityFeature">printPageNumbers</meta>
+    <meta property="schema:accessibilityFeature">tableOfContents</meta>
+    <meta property="schema:accessMode">textual</meta>
+    <meta property="schema:accessMode">visual</meta>
+    <meta property="schema:accessibilityHazard">sound</meta>
+    <meta property="schema:accessibilityAPI">ARIA</meta>
+  </metadata>
+	<manifest>
+		<item id="cover.jpg" href="images/cover.jpg" properties="cover-image" media-type="image/jpeg"/>
+		<item id="typegraphy" href="typegraphy.css" media-type="text/css"/>
+    <item id="book-style" href="book.css" media-type="text/css"/>
+
+    <% for (page of pages) { %>
+      <item id="smil-<%=page.id%>" href="smil/page-<%=page.id%>.smil" media-type="application/smil+xml" />
+      <item id="page-<%=page.id%>" href="page-<%=page.id%>.xhtml" media-type="application/xhtml+xml"   media-overlay="smil-<%=page.id%>"/>
+      <item id="<%=page.id%>.jpg" href="images/<%=page.id%>.jpg" media-type="image/jpeg"/>
+      <item id="<%=page.id%>.mp3" href="audio/<%=page.id%>.mp3" media-type="audio/mpeg"/>
+    <% } %>
+	</manifest>
+	<spine>
+    <% for (idx in pages) { %>
+      <% if (idx % 2) { %>
+        <itemref idref="page-<%pages[idx].id%>" properties="page-spread-right" />
+      <% } else { %>
+        <itemref idref="page-<%pages[idx].id%>" properties="page-spread-left" />
+      <% } %>
+    <% } %>
+	</spine>
+</package>
