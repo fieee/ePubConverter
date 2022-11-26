@@ -19,6 +19,7 @@ module.exports = async (page, options) => {
   const templateFile = path.normalize(path.join(path.dirname(__dirname), 'templates','content','page.xhtml.ejs'));
   const templateData = fs.readFileSync(templateFile, 'utf-8');
   const renderedData = await ejs.render(templateData, page, { rmWhitespace: true});
+
   // write page file
   fs.writeFileSync(filename, renderedData);
   if(process.env.VERBOSE) console.log('ePub page file generated = ', filename);
