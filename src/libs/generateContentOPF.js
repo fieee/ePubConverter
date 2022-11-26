@@ -3,11 +3,13 @@ const path = require('path');
 const ejs = require('ejs-promise');
 const uuid = require('uuid');
 const copy = require('recursive-copy');
+const getMP3Duration = require('get-mp3-duration')
 
 module.exports = async (bookData, options) => {
   const fileRoot = path.join(options.epubPath, 'OEBPS');
   const filename = path.join(fileRoot, `content.opf`);
 
+  // metadata
   const resolution = `${bookData.pages[0].width}x${bookData.pages[0].height}`;
   const publishDate = new Date().toISOString();
   const modifiedDate = new Date().toISOString();
@@ -16,6 +18,17 @@ module.exports = async (bookData, options) => {
   const publisher = 'Pickatale AS';
   const bookId = uuid.v4();
   const bookType = 'comic';
+
+  //audio durtion
+  let totalDuration = 0;
+  for (idx in bookData.pages) {
+    const page = bookData.pages[idx];
+    const buffer = fs.readFileSync(path.join(options.ppubPath, 'data', page.audioFile));
+    const duration = getMP3Duration(buffer);
+    totalDuration += totalDuration/1000;
+    bookData.pages[idx].duration = duration/1000;
+  }
+
   const data = {
     ...bookData,
     resolution,
@@ -26,7 +39,9 @@ module.exports = async (bookData, options) => {
     publisher,
     bookId,
     bookType,
+    totalDuration,
   };
+
 
   //fetch cover.jpg
   const coverImageURL = bookData.pages[0].file

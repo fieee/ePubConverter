@@ -19,6 +19,7 @@
   "dependencies": {
     "args": "^5.0.3",
     "ejs-promise": "^0.3.3",
+    "get-mp3-duration": "^1.0.0",
     "recursive-copy": "^2.0.14",
     "uuid": "^9.0.0",
     "zip-unzip-promise": "^2.1.1"

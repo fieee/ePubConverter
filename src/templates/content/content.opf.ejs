@@ -8,6 +8,7 @@
 		<dc:identifier id="bookid">urn:uuid:<%=bookId%></dc:identifier>
 
     <meta name="fixed-layout" content="true"/>
+    <meta name="generator" content="ePubConvertor"/>
     <meta name="original-resolution" content="<%=resolution%>"/>
     <meta name="book-type" content="<%=bookType%>"/>
     <meta property="rendition:spread"><%=configuration.orientation%></meta>
@@ -17,7 +18,12 @@
 		<meta property="rendition:layout">pre-paginated</meta>
 		<meta property="ibooks:specified-fonts">true</meta>
 		<meta property="media:active-class">-epub-media-overlay-active</meta>
-		<meta property="media:duration">1873.71</meta>
+		<meta property="media:duration"><%=totalDuration%></meta>
+
+    <% for (page of pages) { %>
+      <meta property="media:duration" refines="#smil-<%=page.id%>"><%=page.duration%></meta>
+    <% } %>
+
 		<meta property="ibooks:version">1.1</meta>
     <meta property="schema:accessibilitySummary">This publication conforms to WCAG 2.0 Level A.</meta>
     <meta property="schema:accessModeSufficient">visual</meta>
