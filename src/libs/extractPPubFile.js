@@ -1,5 +1,5 @@
 /**
- * unzip the pPub file to the system temp folder and return the path
+ * Unzip the pPub file to the system temp folder and return the path
  * @param {string} inputFile  input path of pPub file
  * @return {string} temp folder path
  */

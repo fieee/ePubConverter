@@ -4,11 +4,30 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=595,height=842" />
-		<title>1</title>
+		<title>page-<%=id%></title>
 		<link href="typography.css" rel="stylesheet" type="text/css"/>
     <link href="book.css" rel="stylesheet" type="text/css"/>
   </head>
-  <body>
-
+  <style>
+    .page {
+      width: <%=width%>;
+      height: <%=height%>;
+      background-image: url(<%=backgroundImage%>);
+    }
+  </style>
+  <body class="page" >
+    <% for (block of textBlocks) { %>
+      <div class="text-block" style="width: <%=block.width%>px; height: <%=block.height%>px; left:<%=block.coordinates.x%>px; top: <%=block.coordinates.y%>px;">
+        <% for (text of block.textAreas) { %>
+        <p style="text-align: <%=text.textAlign%>; margin-top: <%=text.marginTop%>px; margin-bottom: <%=text.marginTop%>px; padding-left: <%=text.paddingLeft%>px;" >
+          <% for (word of text.words) { %>
+            <span id="word-<%=word.id%>" class="style-<%=word.formatConfigurationId%>">
+              <%=word.word%>
+            </span>
+          <% } %>
+        </p>
+        <% } %>
+      </div>
+    <% } %>
   </body>
 </html>

@@ -15,14 +15,19 @@ module.exports = async (page, options) => {
   await copy(path.join(options.ppubPath, 'data', page.audioFile),
              path.join(fileRoot, 'audio', path.basename(page.audioFile)));
 
+  const data = {
+    ...page,
+    backgroundImage: path.join('images', path.basename(page.file)),
+  }
+
   // using ejs template to generate the page contten
   const templateFile = path.normalize(path.join(path.dirname(__dirname), 'templates','content','page.xhtml.ejs'));
   const templateData = fs.readFileSync(templateFile, 'utf-8');
-  const renderedData = await ejs.render(templateData, page, { rmWhitespace: true});
+  const renderedData = await ejs.render(templateData, data, { rmWhitespace: true});
 
   // write page file
   fs.writeFileSync(filename, renderedData);
   if(process.env.VERBOSE) console.log('ePub page file generated = ', filename);
-  process.exit();
+
   return filename;
 }
