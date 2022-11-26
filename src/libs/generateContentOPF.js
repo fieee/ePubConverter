@@ -11,8 +11,8 @@ module.exports = async (bookData, options) => {
 
   // metadata
   const resolution = `${bookData.pages[0].width}x${bookData.pages[0].height}`;
-  const publishDate = new Date().toISOString();
-  const modifiedDate = new Date().toISOString();
+  const publishDate = new Date().toISOString().substring(0,19)+"Z";
+  const modifiedDate = new Date().toISOString().substring(0,19)+"Z";
   const bookName = 'NO NAME';
   const language = 'en-GB';
   const publisher = 'Pickatale AS';
