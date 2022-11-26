@@ -13,5 +13,5 @@ module.exports = async (bookData, options) => {
 
   fs.writeFileSync(filename, renderedData);
   if(process.env.VERBOSE) console.log('book css file generated = ', filename);
-  console.log(renderedData);
+  return filename;
 }
