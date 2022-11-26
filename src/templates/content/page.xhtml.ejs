@@ -11,12 +11,12 @@
   </head>
   <style>
     .page {
-      width: <%=width%>;
-      height: <%=height%>;
+      width: <%=width%>px;
+      height: <%=height%>px;
       background-image: url(<%=backgroundImage%>);
     }
   </style>
-  <body class="page" >
+  <body class="page">
     <% for (let block of textBlocks) { %>
       <div class="text-block" style="width: <%=block.width%>px; height: <%=block.height%>px; left:<%=block.coordinates.x%>px; top: <%=block.coordinates.y%>px;">
         <% for (let text of block.textAreas) { %>
