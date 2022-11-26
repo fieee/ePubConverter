@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 const args = require('args');
+const fs = require('fs');
 const path = require('path');
 const libs = require('./libs');
 
@@ -15,6 +16,8 @@ const libs = require('./libs');
   if (!flags.inputFile) args.showHelp();
   if (!flags.outputDir) args.showHelp();
   if (flags.verbose) process.env.VERBOSE = true;
+
+  if(!fs.existsSync(flags.outputDir)) throw new Error('output dir does not exists!');
 
   const filename = path.basename(flags.inputFile, path.extname(flags.inputFile));
   const ppubPath = await libs.extractPPubFile(flags.inputFile);
@@ -37,4 +40,4 @@ const libs = require('./libs');
   await libs.cleanupTempFiles([ppubPath, epubPath]);
 
   if(process.env.VERBOSE) console.log('Completed');
-})()
+})();
