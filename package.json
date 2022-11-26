@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/fieee/ePubConverter#readme",
   "dependencies": {
-    "args": "^5.0.3"
+    "args": "^5.0.3",
+    "zip-unzip-promise": "^2.1.1"
   }
 }

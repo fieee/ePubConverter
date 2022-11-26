@@ -7,12 +7,14 @@ const libs = require('./libs');
   args
       .option('inputFile', 'Input Pickatale pPub file')
       .option('outputDir', 'Output dir for generated ePub files' )
+      .option('verbose', 'Display more debug information', false)
 
   const flags = args.parse(process.argv, {})
 
   // check all required paramters
   if (!flags.inputFile) args.showHelp();
   if (!flags.outputDir) args.showHelp();
+  if (flags.verbose) process.env.VERBOSE = true;
 
   const filename = path.basename(flags.inputFile, path.extname(flags.inputFile));
   const ppubPath = await libs.extractPPubFile(flags.inputFile);
@@ -32,7 +34,7 @@ const libs = require('./libs');
   }
   await libs.generateFinalizedEPUB(contentOPF,
             epubPath, path.join(flags.outputDir, filename));
-  await libs.cleanupTempFiles(ppubPath, epubPath);
+  await libs.cleanupTempFiles([ppubPath, epubPath]);
 
   console.log('Completed');
 })()
