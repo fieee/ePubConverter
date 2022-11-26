@@ -21,7 +21,7 @@ module.exports = async (bookData, options) => {
 
   //audio durtion
   let totalDuration = 0;
-  for (idx in bookData.pages) {
+  for (let idx in bookData.pages) {
     const page = bookData.pages[idx];
     const buffer = fs.readFileSync(path.join(options.ppubPath, 'data', page.audioFile));
     const duration = getMP3Duration(buffer);

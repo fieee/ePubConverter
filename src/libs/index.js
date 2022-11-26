@@ -6,6 +6,7 @@ module.exports = {
   createPageSMIL:         require('./createPageSMIL'),
   copyPageResourceFiles:  require('./copyPageResourceFiles'),
   generateContentOPF:     require('./generateContentOPF'),
+  generateTOC:            require('./generateTOC'),
   generateBookCSS:        require('./generateBookCSS'),
   generateFinalizedEPUB:  require('./generateFinalizedEPUB'),
   cleanupTempFiles:       require('./cleanupTempFiles'),

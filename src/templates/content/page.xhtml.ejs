@@ -17,11 +17,11 @@
     }
   </style>
   <body class="page" >
-    <% for (block of textBlocks) { %>
+    <% for (let block of textBlocks) { %>
       <div class="text-block" style="width: <%=block.width%>px; height: <%=block.height%>px; left:<%=block.coordinates.x%>px; top: <%=block.coordinates.y%>px;">
-        <% for (text of block.textAreas) { %>
+        <% for (let text of block.textAreas) { %>
         <p style="text-align: <%=text.textAlign%>; margin-top: <%=text.marginTop%>px; margin-bottom: <%=text.marginTop%>px; padding-left: <%=text.paddingLeft%>px;" >
-          <% for (word of text.words) { %>
+          <% for (let word of text.words) { %>
             <span id="word-<%=word.id%>" class="style-<%=word.formatConfigurationId%>">
               <%=word.word%>
             </span>

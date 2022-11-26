@@ -20,7 +20,7 @@
 		<meta property="media:active-class">-epub-media-overlay-active</meta>
 		<meta property="media:duration"><%=totalDuration%></meta>
 
-    <% for (page of pages) { %>
+    <% for (let page of pages) { %>
       <meta property="media:duration" refines="#smil-<%=page.id%>"><%=page.duration%></meta>
     <% } %>
 
@@ -44,8 +44,9 @@
     <item id="font" href="font.css" media-type="text/css"/>
     <item id="book-style" href="book.css" media-type="text/css"/>
     <item id="AmericanTypewriter.ttf" href="font/AmericanTypewriter.ttf" media-type="application/vnd.ms-opentype" />
+    <item id="toc" href="toc.xhtml" media-type="application/xhtml+xml" properties="nav" />
 
-    <% for (page of pages) { %>
+    <% for (let page of pages) { %>
       <item id="smil-<%=page.id%>" href="smil/page-<%=page.id%>.smil" media-type="application/smil+xml" />
       <item id="page-<%=page.id%>" href="page-<%=page.id%>.xhtml" media-type="application/xhtml+xml" media-overlay="smil-<%=page.id%>"/>
       <item id="<%=page.id%>.jpg" href="images/<%=page.id%>.jpg" media-type="image/jpeg"/>
@@ -53,7 +54,7 @@
     <% } %>
 	</manifest>
 	<spine>
-    <% for (idx in pages) { %>
+    <% for (let idx in pages) { %>
       <% if (idx % 2) { %>
         <itemref idref="page-<%=pages[idx].id%>" properties="page-spread-right" />
       <% } else { %>

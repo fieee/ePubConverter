@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:epub="http://www.idpf.org/2007/ops" lang="en-US" xml:lang="en-US">
+	<head>
+		<meta charset="utf-8"></meta>
+    <meta name="viewport" content="width=<%=width%>,height=<%=height%>" />
+	  <title>Navigation</title>
+    <link href="typography.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body>
+    <nav epub:type="toc" role="doc-toc" id="toc" >
+      <h2>Contents</h2>
+      <ol>
+        <% for (let page of pages) { %>
+          <li><a href="page-<%=page.id%>.xhtml"><%=page.title%></a></li>
+        <% } %>
+      </ol>
+    </nav>
+    <nav epub:type="page-list"  role="doc-pagelist">
+      <ol>
+        <% let pageId = 1; %>
+        <% for (let page of pages) { %>
+          <li><a href="page-<%=page.id%>.xhtml"><%=(pageId)%></a></li>
+          <% pageId ++; %>
+        <% } %>
+    </ol>
+    </nav>
+  </body>
+</html>
