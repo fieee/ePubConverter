@@ -5,7 +5,7 @@ const uuid = require('uuid');
 const copy = require('recursive-copy');
 
 module.exports = async (bookData, options) => {
-  const fileRoot = path.join(options.epubPath, 'OBEPS');
+  const fileRoot = path.join(options.epubPath, 'OEBPS');
   const filename = path.join(fileRoot, `content.opf`);
 
   const resolution = `${bookData.pages[0].width}x${bookData.pages[0].height}`;

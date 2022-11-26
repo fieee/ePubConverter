@@ -5,12 +5,11 @@ const ejs = require('ejs-promise');
 
 module.exports = async (page, options) => {
   // create xhtml page
-  const fileRoot = path.join(options.epubPath, 'OBEPS');
+  const fileRoot = path.join(options.epubPath, 'OEBPS');
   const filename = path.join(fileRoot, 'smil', `page-${page.id}.smil`);
 
   const data = {
     ...page,
-    pageId: page.id,
     audioFile: path.join('audio', path.basename(page.audioFile)),
   }
 
