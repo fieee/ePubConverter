@@ -22,3 +22,14 @@ verbose output for debug
 ````sh
 ./src/converter.js -h
 ````
+
+### Knowning issues
+formatConfigurations -> backgroundOpacity not support
+
+Sample ppub file missing metadata info
+- does not contains book name
+- does not contains cover.jpg
+- Does not contain language
+- Does not contains book-type
+- Does not support published date
+- Does not support modified date

@@ -24,14 +24,13 @@ const libs = require('./libs');
 
   // generate the book level css file
   await libs.generateBookCSS(bookData, options);
-  let contentOPF;
   //geenerate book pages
   for(const page of bookData.pages) {
     await libs.createPageXHTML(page, options);
     await libs.createPageSMIL(page, options);
     await libs.copyPageResourceFiles(page, options);
-    contentOPF = await libs.updateContentOPF(contentOPF, options);
   }
+  await libs.generateContentOPF(bookData, options);
   //geenerate final epub3 file
   await libs.generateFinalizedEPUB(epubPath, path.join(flags.outputDir, `${filename}.epub`));
   //clean up all temp files
