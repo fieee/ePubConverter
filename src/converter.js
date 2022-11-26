@@ -33,8 +33,7 @@ const libs = require('./libs');
     contentOPF = await libs.updateContentOPF(contentOPF, options);
   }
   //geenerate final epub3 file
-  await libs.generateFinalizedEPUB(contentOPF,
-            epubPath, path.join(flags.outputDir, filename));
+  await libs.generateFinalizedEPUB(epubPath, path.join(flags.outputDir, `${filename}.epub`));
   //clean up all temp files
   await libs.cleanupTempFiles([ppubPath, epubPath]);
 
