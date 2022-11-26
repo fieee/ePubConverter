@@ -15,7 +15,7 @@ module.exports = async (bookData, options) => {
   const language = 'en-GB';
   const publisher = 'Pickatale AS';
   const bookId = uuid.v4();
-  const bookType = 'comic',
+  const bookType = 'comic';
   const data = {
     ...bookData,
     resolution,
