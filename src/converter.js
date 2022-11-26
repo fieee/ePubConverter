@@ -20,17 +20,16 @@ const libs = require('./libs');
   const ppubPath = await libs.extractPPubFile(flags.inputFile);
   const epubPath = await libs.createEmptyEPUBFolder();
   const bookData = await libs.parsepPubFile(ppubPath);
+  const options = { epubPath, ppubPath, bookData };
 
   let contentOPF;
   let pageId = 0;
-  for(const page in bookData.pages) {
+  for(const page of bookData.pages) {
     //geenerate page by page
-    pageId ++;
-    const pageName = 'p' + pageId;
-    await libs.createPageXHTML(page, pageName);
-    await libs.createPageSMIL(page, pageName);
-    await libs.copyPageResourceFiles(page);
-    contentOPF = await libs.updateContentOPF(contentOPF)
+    await libs.createPageXHTML(page, options);
+    await libs.createPageSMIL(page, options);
+    await libs.copyPageResourceFiles(page, options);
+    contentOPF = await libs.updateContentOPF(contentOPF, options)
   }
   await libs.generateFinalizedEPUB(contentOPF,
             epubPath, path.join(flags.outputDir, filename));

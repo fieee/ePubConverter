@@ -18,6 +18,7 @@
   "homepage": "https://github.com/fieee/ePubConverter#readme",
   "dependencies": {
     "args": "^5.0.3",
+    "ejs-promise": "^0.3.3",
     "recursive-copy": "^2.0.14",
     "zip-unzip-promise": "^2.1.1"
   }
