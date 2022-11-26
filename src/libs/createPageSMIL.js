@@ -5,7 +5,7 @@ const ejs = require('ejs-promise');
 
 module.exports = async (page, options) => {
   // create xhtml page
-  const fileRoot = path.join(options.epubPath, 'OEBPS');
+  const fileRoot = path.join(options.epubPath, 'OPS');
   const filename = path.join(fileRoot, 'smil', `page-${page.id}.smil`);
 
   const data = {

@@ -1,16 +1,15 @@
-const os = require('os');
 const fs = require('fs');
 const path = require('path');
-const {zip} = require('zip-unzip-promise');
+const zipper = require('epub-zipper');
 
 module.exports = async (epubPath, epubFile) => {
   if (!fs.existsSync(epubPath)) throw new Error("Input epub path does not exist");
-  const epubFiles = [
-    epubPath + '/mimetype',
-    epubPath + '/META-INF/',
-    epubPath + '/OEBPS/',
-  ];
-  await zip(epubFiles, epubFile, { overwrite:true });
+
+  const options = {
+    input: epubPath,
+    output: path.dirname(epubFile),
+  }
+  await zipper.create(options);
   if(process.env.VERBOSE) console.log('final ePub3 file  = ', epubFile);
   return epubFile;
 }

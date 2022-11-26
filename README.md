@@ -23,6 +23,9 @@ verbose output for debug
 ./src/converter.js -h
 ````
 
+### ePub3 validation
+the exported file could pass validation check on https://draft2digital.com/book/epubcheck/upload
+
 ### Knowning issues
 formatConfigurations -> backgroundOpacity not support
 
@@ -33,3 +36,5 @@ Sample ppub file missing metadata info
 - Does not contains book-type
 - Does not support published date
 - Does not support modified date
+- ToC is required for iBook
+- font file issues

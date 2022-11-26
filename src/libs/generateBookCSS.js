@@ -3,7 +3,7 @@ const path = require('path');
 const ejs = require('ejs-promise');
 
 module.exports = async (bookData, options) => {
-  const fileRoot = path.join(options.epubPath, 'OEBPS');
+  const fileRoot = path.join(options.epubPath, 'OPS');
   const filename = path.join(fileRoot, `book.css`);
 
   const data = { styles: bookData.formatConfigurations };

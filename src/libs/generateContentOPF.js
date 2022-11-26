@@ -6,7 +6,7 @@ const copy = require('recursive-copy');
 const getMP3Duration = require('get-mp3-duration')
 
 module.exports = async (bookData, options) => {
-  const fileRoot = path.join(options.epubPath, 'OEBPS');
+  const fileRoot = path.join(options.epubPath, 'OPS');
   const filename = path.join(fileRoot, `content.opf`);
 
   // metadata
