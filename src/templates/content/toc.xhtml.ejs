@@ -17,7 +17,7 @@
       <h2>Guide</h2>
       <ol>
         <% for (let page of pages) { %>
-          <li><a href="page-<%=page.id%>.xhtml"><%=page.title%></a></li>
+          <li><a epub:type="bodymatter" href="page-<%=page.id%>.xhtml"><%=page.title%></a></li>
         <% } %>
       </ol>
   </nav>

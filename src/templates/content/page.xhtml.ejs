@@ -8,14 +8,14 @@
 		<link href="typography.css" rel="stylesheet" type="text/css"/>
     <link href="font.css" rel="stylesheet" type="text/css"/>
     <link href="book.css" rel="stylesheet" type="text/css"/>
-  </head>
-  <style>
+    <style>
     .page {
       width: <%=width%>px;
       height: <%=height%>px;
       background-image: url(<%=backgroundImage%>);
     }
   </style>
+  </head>
   <body class="page">
     <% for (let block of textBlocks) { %>
       <div class="text-block" style="width: <%=block.width%>px; height: <%=block.height%>px; left:<%=block.coordinates.x%>px; top: <%=block.coordinates.y%>px;">
